@@ -28,7 +28,7 @@ Las principales características de SQL son:
 
 ## Componentes de SQL
 
-En SQL, los componentes principales son
+En SQL, los componentes principales son: [Ejemplo](./Consultas.sql)
 
 | Componente                             | Descripción                                                                                  |
 | -------------------------------------- | -------------------------------------------------------------------------------------------- |
