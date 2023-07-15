@@ -95,7 +95,7 @@ La normalización es un proceso utilizado en el diseño de bases de datos relaci
 
 3. **Tercera Forma Normal (3NF)**: Se busca eliminar la dependencia transitiva de los datos. Los atributos no clave no deben depender de otros atributos no clave.
 
-Normalmente ya que se considera que una base de datos está bien diseñada si cumple por lo menos 3 formas normales.
+Normalmente ya que se considera que una base de datos está bien diseñada si cumple por lo menos 3 formas normales. [Ejemplo](./normalizacion.sql)
 
 4. **Cuarta Forma Normal (4NF)**: Se busca eliminar las dependencias multivaluadas. Los atributos no clave no deben depender de conjuntos de valores de otros atributos no clave.
 
