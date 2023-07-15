@@ -10,7 +10,7 @@
 
 ## Creación de Tablas
 
-Para crear una tabla en MySQL, se utilizan los siguientes pasos
+Para crear una tabla en MySQL, se utilizan los siguientes pasos: [Ejemplo](./Consultas_Intermedias.sql)
 
 1. **Decidir la estructura de la tabla**: Antes de crear la tabla, debes determinar qué columnas o campos necesitas y el tipo de datos que contendrán. Por ejemplo, si quieres crear una tabla de usuarios, puedes tener columnas como id, nombre, email y edad.
 
@@ -325,12 +325,12 @@ Consultar la Vista
 SELECT * FROM vista_usuarios;
 ```
 
-| Beneficios de utilizar vistas en MySQL |
-| -------------------------------------- |
-| Simplificación de consultas            |
-| Ocultamiento de la complejidad         |
-| Mejora del rendimiento                 |
-| Seguridad y control de acceso          |
+Los beneficios de utilizar vistas en MySQL son:
+
+- Simplificación de consultas
+- Ocultamiento de la complejidad
+- Mejora del rendimiento
+- Seguridad y control de acceso
 
 Para crear una vista en MySQL, puedes utilizar el comando CREATE VIEW seguido del nombre de la vista y la consulta que define la vista. A continuación, se muestra un ejemplo:
 
