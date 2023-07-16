@@ -48,8 +48,8 @@ CREATE TABLE equipo (
     idModelo INT,
     idEnsamblador INT,
     PRIMARY KEY (id),
-    FOREIGN KEY (idModelo) REFERENCES modelos(idModelo),
-    FOREIGN KEY (idEnsamblador) REFERENCES fabricantes(id)
+    FOREIGN KEY (idModelo) REFERENCES modelos(idModelo) ON DELETE CASCADE,
+    FOREIGN KEY (idEnsamblador) REFERENCES fabricantes(id) ON DELETE CASCADE
 );
 
 -- 3 Forma de normalizacion, crearemos una tabla adicional para eliminar esta dependencia.
@@ -58,12 +58,12 @@ CREATE TABLE ensambladores (
     id INT NOT NULL AUTO_INCREMENT,
     idFabricante INT,
     PRIMARY KEY (id),
-    FOREIGN KEY (idFabricante) REFERENCES fabricantes(id)
+    FOREIGN KEY (idFabricante) REFERENCES fabricantes(id) ON DELETE CASCADE
 );
 
 ALTER TABLE equipo
 ADD COLUMN idEnsamblador INT,
-ADD FOREIGN KEY (idEnsamblador) REFERENCES ensambladores(id);
+ADD FOREIGN KEY (idEnsamblador) REFERENCES ensambladores(id) ON DELETE CASCADE;
 
 -- Base de datos con las 3 formas de normalizacion cambiando nombre de algunas tablas
 
@@ -93,7 +93,7 @@ CREATE TABLE ensambladores (
     nombre VARCHAR(50) NOT NULL,
     idFabricante INT NOT NULL,
     PRIMARY KEY (idEnsamblador),
-    FOREIGN KEY (idFabricante) REFERENCES fabricantes (idFabricante)
+    FOREIGN KEY (idFabricante) REFERENCES fabricantes (idFabricante) ON DELETE CASCADE
 );
 
 CREATE TABLE ensamblajes (
@@ -102,7 +102,7 @@ CREATE TABLE ensamblajes (
     idModelo INT NOT NULL,
     idEnsamblador INT NOT NULL,
     PRIMARY KEY (idEnsamblaje),
-    FOREIGN KEY (idComponente) REFERENCES componentes (idComponente),
-    FOREIGN KEY (idModelo) REFERENCES modelos (idModelo),
-    FOREIGN KEY (idEnsamblador) REFERENCES ensambladores (idEnsamblador)
+    FOREIGN KEY (idComponente) REFERENCES componentes (idComponente) ON DELETE CASCADE,
+    FOREIGN KEY (idModelo) REFERENCES modelos (idModelo) ON DELETE CASCADE,
+    FOREIGN KEY (idEnsamblador) REFERENCES ensambladores (idEnsamblador) ON DELETE CASCADE
 );
