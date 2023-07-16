@@ -107,6 +107,32 @@ CREATE TABLE productos (
 
 La columna usuario_id en la tabla productos se define como clave externa haciendo referencia a la clave primaria id en la tabla usuarios. Esto asegura la integridad referencial de los datos relacionados. En MySQL, se relacionan tablas utilizando claves primarias y externas, asegurando que las claves tengan el mismo tipo de dato y tamaño para establecer una relación adecuada.
 
+Tambien se le puede agregar la cláusula "ON CASCADE" de MySQL se utiliza para especificar el comportamiento que se debe seguir cuando se modifican o eliminan registros en tablas relacionadas mediante claves externas.
+
+- **ON CASCADE DELETE** indica que al eliminar un registro en la tabla principal, todos los registros relacionados en la tabla secundaria también se eliminarán automáticamente.
+
+```sql
+CREATE TABLE productos (
+  id INT NOT NULL AUTO_INCREMENT,
+  nombre VARCHAR(50) NOT NULL,
+  usuario_id INT,
+  PRIMARY KEY (id),
+  FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
+);
+```
+
+- **ON CASCADE UPDATE** indica que al actualizar el valor de la clave primaria en la tabla principal, todos los valores relacionados en la tabla secundaria se actualizarán automáticamente.
+
+```sql
+CREATE TABLE productos (
+  id INT NOT NULL AUTO_INCREMENT,
+  nombre VARCHAR(50) NOT NULL,
+  usuario_id INT,
+  PRIMARY KEY (id),
+  FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON UPDATE CASCADE
+);
+```
+
 ## Campos y Alias en MySQL
 
 - **Campos**: Los campos se refieren a las columnas de una tabla. Al realizar consultas, puedes seleccionar los campos específicos que deseas recuperar utilizando la cláusula SELECT. Por ejemplo:
