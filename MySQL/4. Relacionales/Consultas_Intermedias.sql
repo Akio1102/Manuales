@@ -1,4 +1,3 @@
-
 -- Creación de BD
 
 CREATE DATABASE Mundo;
@@ -15,6 +14,8 @@ CREATE TABLE Ciudades (
     PRIMARY KEY (id)
 );
 
+-- Con Delete Cscade
+
 CREATE TABLE Personas (
     id INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(50) NOT NULL,
@@ -22,7 +23,19 @@ CREATE TABLE Personas (
     edad INT NOT NULL,
     idCiudad INT NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (idCiudad) REFERENCES Ciudades(id)
+    FOREIGN KEY (idCiudad) REFERENCES Ciudades(id) ON DELETE CASCADE
+);
+
+-- Con Update Cscade
+
+CREATE TABLE Personas (
+    id INT NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(50) NOT NULL,
+    apellido VARCHAR(50) NOT NULL,
+    edad INT NOT NULL,
+    idCiudad INT NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (idCiudad) REFERENCES Ciudades(id) ON UPDATE CASCADE
 );
 
 -- Insertar Datos a las tablas
@@ -42,6 +55,7 @@ INSERT INTO Personas (nombre, apellido, edad, idCiudad) VALUES
 ('Emily', 'Williams', 40, 1),
 ('Pepe', 'Andres', 15, 1),
 ('Daniel', 'Brown', 45, 2);
+('Jean', 'Porras', 20, 4);
 
 -- En este ejemplo, se crea una nueva tabla llamada "Personas_Nuevas" utilizando la cláusula CREATE TABLE AS. La tabla se crea seleccionando todas las filas de la tabla existente "Personas" donde la columna "edad" sea mayor o igual a 18.
 
@@ -55,6 +69,20 @@ WHERE edad >= 18;
 DESCRIBE Personas;
 
 SHOW COLUMNS FROM Personas;
+
+-- Muestra Todos los datos de las 2 Tablas
+
+SELECT * FROM Personas INNER JOIN Ciudades ON Personas.idCiudad = Ciudades.id;
+
+--  El query eliminar la ciudad con ID 4 de la tabla Ciudades. Debido al ON DELETE CASCADE en la relación con la tabla Personas, todas las filas en Personas con ID de ciudad igual a 4 también se eliminarán automáticamente. Esto garantiza la integridad referencial y elimina las filas relacionadas de manera eficiente.
+
+DELETE FROM Ciudades WHERE id = 4;
+
+-- Editamos el nombre de la ciudad con el id 3 y posteriormente vemos los datos como fueron modificados 
+
+UPDATE Ciudades SET nombre = 'Cali' WHERE id = 3;
+
+SELECT * FROM Personas INNER JOIN Ciudades ON Personas.idCiudad = Ciudades.id;
 
 -- Consultas con Alias
 
